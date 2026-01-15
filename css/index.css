@@ -14,7 +14,7 @@
 
 @font-face {
   font-family: 'TenFontCuaBan';
-  src: url('../fonts/UTMHelvetIns.ttf') format('truetype'), url('../fonts/subset-UTMHelvetIns.woff2') format('woff2'), url('../fonts/subset-UTMHelvetIns.woff') format('woff');
+  src: url('../fonts/UTMHelvetIns.ttf') format('truetype'), url('../fonts/subset-UTMHelvetIns.woff') format('woff'), url('../fonts/subset-UTMHelvetIns.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
