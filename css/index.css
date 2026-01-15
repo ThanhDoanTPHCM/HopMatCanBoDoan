@@ -1,0 +1,423 @@
+/* ==========================================================================
+   1. CẤU HÌNH CƠ BẢN & FONT
+   ========================================================================== */
+:root {
+  --red: #f42004;
+  --green: #027417;
+  --light-bg: #fff9e1;
+  --white-glow: 0 0 10px rgba(255, 255, 255, 0.8);
+  /* Bóng chữ tạo viền trắng giúp đọc rõ trên mọi nền */
+  --text-stroke: 
+      2px 0px 0 #fff, -2px 0px 0 #fff, 0px 2px 0 #fff, 0px -2px 0 #fff,
+      1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+}
+
+@font-face {
+  font-family: 'TenFontCuaBan';
+  src: url('../fonts/UTMHelvetIns.ttf') format('truetype'), url('../fonts/subset-UTMHelvetIns.woff2') format('woff2'), url('../fonts/subset-UTMHelvetIns.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SVN-Standly";
+  src: url("../fonts/UTMEdwardianKT.ttf") format("truetype"), url('../fonts/subset-UTMEdwardian.woff2') format('woff2'), url('../fonts/subset-UTMEdwardian.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+  width: 100%;
+  min-height: 100%;
+  font-family: 'TenFontCuaBan', Arial, sans-serif;
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+/* Background cố định */
+.background-full {
+  position: fixed;
+  inset: 0;
+  background-image: url('../images/Thoigian.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   2. LAYOUT CHÍNH (FLUID RESPONSIVE)
+   ========================================================================== */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Khoảng cách an toàn với mép màn hình */
+}
+
+.main-frame {
+  /* --- KỸ THUẬT QUAN TRỌNG: Width linh hoạt --- */
+  /* Chiếm 100% chiều rộng nhưng trừ đi 20px lề, và không vượt quá 1200px */
+  width: min(100% - 20px, 1200px);
+  
+  /* Chiều cao tự động giãn theo nội dung, nhưng tối thiểu cao 80% màn hình cho đẹp */
+  min-height: 80vh;
+  height: auto;
+  
+  /* Padding co giãn: 5vh (trên dưới) và 3vw (trái phải) */
+  padding: 5vh 3vw;
+
+  /* Hiệu ứng kính mờ áp dụng cho TẤT CẢ thiết bị (trông sang hơn) */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+
+  /* Flexbox bố cục dọc */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Tự chia khoảng cách đều */
+  align-items: center;
+  text-align: center;
+  gap: 2rem; /* Khoảng cách tối thiểu giữa các phần (Top - Mid - Bot) */
+}
+
+/* ==========================================================================
+   3. TYPOGRAPHY & ELEMENTS (Dùng CLAMP để tự co giãn font)
+   ========================================================================== */
+
+/* --- Phần LOGO & HEADER --- */
+.logo {
+  /* Logo cao từ 80px đến 130px tùy màn hình */
+  height: clamp(80px, 15vh, 130px);
+  width: auto;
+  margin-bottom: auto;
+  margin-top: -2rem;
+  filter: drop-shadow(0 0 5px white);
+}
+
+.top-agency {
+  color: var(--red);
+  font-weight: bold;
+  /* Chữ chạy từ 14px (mobile) lên 35px (PC) */
+  font-size: clamp(14px, 2vw, 35px); 
+  margin-bottom: auto;
+      text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3));
+}
+
+.main-invite {
+  font-family: "SVN-Standly", Arial, sans-serif;
+  color: var(--green);
+  font-weight: bold;
+  /* Chữ chạy từ 35px đến 65px */
+  font-size: clamp(25px, 6vw, 50px);
+  line-height: 1.5;
+      transform: translateZ(0);
+        text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3));
+  margin-bottom: auto;
+}
+
+.officer-name {
+  color: var(--red);
+  font-weight: bold;
+  text-transform: uppercase;
+  /* Chữ chạy từ 20px đến 40px */
+  font-size: clamp(15px, 4vw, 35px);
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+/* --- Phần NỘI DUNG CHÍNH (Giữa) --- */
+.section-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Chiếm khoảng trống thừa ở giữa */
+}
+
+.sub-invite {
+  font-family: "SVN-Standly", Arial, sans-serif;
+  font-weight: bold;
+  /* Chữ chạy từ 24px đến 45px */
+  font-size: clamp(20px, 4vw, 40px);
+    color: var(--green);
+  margin-bottom: -1rem;
+        text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3)); 
+            transform: translateZ(0)
+}
+
+.program-label {
+  font-family: "SVN-Standly", Arial, sans-serif;
+  font-weight: bold;
+  color: var(--red);
+  /* Chữ chạy từ 28px đến 50px */
+  font-size: clamp(28px, 4.5vw, 50px);
+  transform: translateZ(0);
+        text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3))
+}
+
+.event-title {
+  color: var(--red);
+  font-weight: bold;
+  line-height: 1.3;
+  text-transform: uppercase;
+  /* Chữ chạy từ 20px đến 45px */
+  font-size: clamp(20px, 4vw, 45px);
+  margin-top: 1rem;
+  max-width: 900px; /* Giới hạn chiều rộng để không bị dài quá trên màn hình rộng */
+      text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3));
+}
+
+/* --- Phần THÔNG TIN (Cuối) --- */
+.section-bottom {
+  width: 100%;
+}
+
+.info-group {
+  display: flex;
+  /* Mặc định là row, nhưng sẽ wrap (xuống dòng) nếu chật */
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  /* Khoảng cách giữa các pill tự giãn: tối thiểu 15px, tối đa 50px */
+  gap: clamp(15px, 4vw, 50px); 
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-label {
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: bold;
+    color: var(--green);
+  margin-bottom: 8px;
+    transform: translateZ(0);
+        text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3))
+}
+
+.pill-box {
+  background-color: var(--light-bg);
+  border: 2px solid var(--red);
+  border-radius: 50px;
+  /* Padding tự co giãn */
+  padding: clamp(10px, 1.5vw, 15px) clamp(20px, 3vw, 50px);
+  white-space: nowrap; /* Giữ chữ trên 1 dòng */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.pill-text {
+  color: var(--green);
+  /* Chữ trong pill chạy từ 14px đến 22px */
+  font-size: clamp(12px, 2.5vw, 20px);
+}
+
+/* ==========================================================================
+   4. TINH CHỈNH NHỎ (Khi màn hình quá bé < 600px)
+   ========================================================================== */
+/* ==========================================================================
+   4. TINH CHỈNH RIÊNG CHO ĐIỆN THOẠI (Màn hình < 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+
+  /* --- 1. Cấu trúc khung (Giữ nguyên để không vỡ) --- */
+  .main-frame {
+    width: 95%;      /* Rộng gần hết màn hình */
+    padding: 30px 15px;
+    min-height: auto; /* Chiều cao tự do */
+    gap: 1.5rem;      /* Khoảng cách giữa các phần sát lại hơn */
+  }
+
+  .logo {
+    height: 90px;    /* Chỉnh chiều cao logo tại đây */
+    margin-top: 0;   /* Reset margin */
+  }
+
+  /* --- 2. TỰ DO CHỈNH CỠ CHỮ TẠI ĐÂY (Thay số px theo ý thích) --- */
+  
+  /* Dòng: BAN THƯỜNG VỤ... */
+  .top-agency {
+    font-size: clamp(13px, 3vw, 15px) !important; /* Bạn sửa số 13px này */
+    margin-bottom: 5px;
+  }
+
+  /* Dòng: Trân trọng kính mời */
+  .main-invite {
+    font-size: 30px !important; /* Bạn sửa số 32px này */
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+
+  /* Dòng: Tên cán bộ (Đồng chí...) */
+  .officer-name {
+    font-size: clamp(16px, 4vw, 22px) !important; /* Bạn sửa số 22px này */
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  /* Dòng: Đến tham dự */
+  .sub-invite {
+    font-size: 24px !important; /* Bạn sửa số 24px này */
+    margin-bottom: 0;
+  }
+
+  /* Dòng: Chương trình */
+  .program-label {
+    font-size: 30px !important; /* Bạn sửa số 30px này */
+    margin-top: 5px;
+  }
+
+  /* Dòng: Tên sự kiện (HỌP MẶT...) */
+  .event-title {
+    font-size: clamp(16px, 4vw, 20px) !important; /* Bạn sửa số 20px này */
+    line-height: 1.4;
+  }
+
+  /* --- 3. Phần Thời gian & Địa điểm --- */
+  .info-group {
+    flex-direction: column; /* Xếp chồng lên nhau */
+    gap: 15px;
+    width: 100%;
+  }
+
+  .pill-box {
+    width: 100%;
+    padding: 12px 10px; /* Độ dày của nút */
+  }
+
+  .info-label {
+    font-size: 16px !important; /* Chữ "Thời gian/Địa điểm" */
+  }
+
+  .pill-text {
+    font-size: 16px !important; /* Chữ ngày giờ cụ thể */
+    white-space: normal; /* Cho phép xuống dòng nếu địa chỉ quá dài */
+  }
+}
+
+/* ==========================================================================
+   5. TINH CHỈNH RIÊNG CHO TABLET / IPAD (Màn hình từ 601px đến 1180px)
+   ========================================================================== */
+@media (min-width: 601px) and (max-width: 1180px) {
+
+  /* --- 1. Khung hiển thị: Rộng hơn điện thoại, hẹp hơn PC --- */
+  .main-frame {
+    width: 90%;           /* Chiếm 90% màn hình tablet */
+    min-height: 70vh;     /* Không cần quá cao */
+    padding: 40px 20px;   /* Padding vừa phải */
+    gap: 1.5rem;          /* Khoảng cách các phần tử */
+  }
+
+  .logo {
+    height: 110px;        /* Logo to vừa phải */
+    margin-top: 0;
+  }
+
+  /* --- 2. TỰ DO CHỈNH CỠ CHỮ TABLET (Sửa số px ở đây) --- */
+  
+  /* Đơn vị tổ chức */
+  .top-agency {
+    font-size: 18px !important;
+    margin-bottom: 8px;
+  }
+
+  /* Lời mời chính */
+  .main-invite {
+    font-size: 50px !important; /* To hơn điện thoại, nhỏ hơn PC */
+    line-height: 1.3;
+  }
+
+  /* Tên cán bộ */
+  .officer-name {
+    font-size: clamp(20px, 4vw, 32px) !important;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+
+  /* Đến tham dự */
+  .sub-invite {
+    font-size: 35px !important;
+  }
+
+  /* Chương trình */
+  .program-label {
+    font-size: 40px !important;
+  }
+
+  /* Tên sự kiện */
+  .event-title {
+    font-size: clamp(20px, 4vw, 32px) !important;
+    line-height: 1.4;
+    max-width: 100%; /* Giới hạn chiều rộng để chữ không tràn lề */
+  }
+
+  /* --- 3. Bố cục Thông tin (Ngày/Địa điểm) --- */
+  /* Trên iPad thường đủ chỗ để xếp hàng ngang (Row) */
+  .info-group {
+    flex-direction: row; 
+    flex-wrap: wrap; /* Nếu màn hình iPad dọc quá hẹp, nó sẽ tự xuống dòng */
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .pill-box {
+    padding: 12px 30px;
+  }
+
+  .info-label {
+    font-size: 18px !important;
+  }
+
+  .pill-text {
+    font-size: 18px !important;
+  }
+}
