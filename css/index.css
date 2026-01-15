@@ -14,7 +14,8 @@
 
 @font-face {
   font-family: 'TenFontCuaBan';
-  src: url('../fonts/UTMHelvetIns.ttf') format('truetype'), url('../fonts/subset-UTMHelvetIns.woff') format('woff'), url('../fonts/subset-UTMHelvetIns.woff2') format('woff2');
+  src:  local('TenFontCuaBan'), 
+      url('../fonts/UTMHelvetIns.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -22,7 +23,9 @@
 
 @font-face {
   font-family: "SVN-Standly";
-  src: url("../fonts/UTMEdwardianKT.ttf") format("truetype"), url('../fonts/subset-UTMEdwardian.woff2') format('woff2'), url('../fonts/subset-UTMEdwardian.woff') format('woff');
+  src: local('SVN-Standly'),
+  url("../fonts/subset-UTMEdwardian.woff2") format("woff2"),
+  url("../fonts/UTMEdwardianKT.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -268,6 +271,10 @@ body, html {
    4. TINH CHỈNH RIÊNG CHO ĐIỆN THOẠI (Màn hình < 600px)
    ========================================================================== */
 @media (max-width: 600px) {
+
+  .main-invite, .sub-invite, .program-label {
+  font-family: "SVN-Standly", Arial, sans-serif !important;
+}
 
   /* --- 1. Cấu trúc khung (Giữ nguyên để không vỡ) --- */
   .main-frame {
