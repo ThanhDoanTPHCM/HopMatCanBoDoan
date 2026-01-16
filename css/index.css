@@ -308,7 +308,6 @@ body, html {
   .main-invite {
     font-size: 30px !important; /* Bạn sửa số 32px này */
     line-height: 1.2;
-    font-weight: normal;
     margin-bottom: 5px;
   }
 
@@ -322,14 +321,12 @@ body, html {
   /* Dòng: Đến tham dự */
   .sub-invite {
     font-size: 24px !important; /* Bạn sửa số 24px này */
-    font-weight: normal;
     margin-bottom: 0;
   }
 
   /* Dòng: Chương trình */
   .program-label {
     font-size: 30px !important; /* Bạn sửa số 30px này */
-    font-weight: normal;
     margin-top: 5px;
   }
 
