@@ -133,7 +133,7 @@ body, html {
 }
 
 .main-invite {
-  font-family: "SVN-Standly", Arial, sans-serif;
+  font-family: 'SVN-Standly', 'imperial Script', cursive;
   color: var(--green);
   font-weight: bold;
   /* Chữ chạy từ 35px đến 65px */
@@ -171,7 +171,7 @@ body, html {
 }
 
 .sub-invite {
-  font-family: "SVN-Standly", Arial, sans-serif;
+  font-family: 'SVN-Standly', 'imperial Script', cursive;
   font-weight: bold;
   /* Chữ chạy từ 24px đến 45px */
   font-size: clamp(20px, 4vw, 40px);
@@ -188,7 +188,7 @@ body, html {
 }
 
 .program-label {
-  font-family: "SVN-Standly", Arial, sans-serif;
+  font-family: 'SVN-Standly', 'imperial Script', cursive;
   font-weight: bold;
   color: var(--red);
   /* Chữ chạy từ 28px đến 50px */
@@ -304,7 +304,7 @@ body, html {
 
   /* Dòng: Trân trọng kính mời */
   .main-invite {
-    font-family: 'imperial Script', Arial, sans-serif !important;
+    font-family: 'imperial Script', cursive, sans-serif !important;
     font-size: 30px !important; /* Bạn sửa số 32px này */
     line-height: 1.2;
     margin-bottom: 5px;
@@ -319,14 +319,14 @@ body, html {
 
   /* Dòng: Đến tham dự */
   .sub-invite {
-    font-family: 'imperial Script', Arial, sans-serif !important;
+    font-family: 'imperial Script', cursive, sans-serif !important;
     font-size: 24px !important; /* Bạn sửa số 24px này */
     margin-bottom: 0;
   }
 
   /* Dòng: Chương trình */
   .program-label {
-    font-family: 'imperial Script', Arial, sans-serif !important;
+    font-family: 'imperial Script', cursive, sans-serif !important;
     font-size: 30px !important; /* Bạn sửa số 30px này */
     margin-top: 5px;
   }
