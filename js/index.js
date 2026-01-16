@@ -1,28 +1,22 @@
-/* ==========================================================================
-   XỬ LÝ LẤY TÊN TỪ TALLY VÀ HIỂN THỊ LÊN THIỆP
-   ========================================================================== */
+console.log("Script đã kết nối thành công!");
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Lấy tất cả tham số từ URL
     const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get('ten');
     
-    // 2. Tìm giá trị của tham số "name" (Phải khớp với ID trường trên Tally)
-    // Nếu trên Tally bạn đặt là "ho_ten" thì đổi 'name' thành 'ho_ten'
-    const userName = urlParams.get('name');
+    console.log("Tên lấy được từ URL là:", userName);
 
-    // 3. Tìm phần tử hiển thị tên trên giao diện
     const nameElement = document.querySelector('.officer-name');
+    console.log("Phần tử hiển thị tên là:", nameElement);
 
     if (nameElement) {
         if (userName) {
-            // Giải mã URL (xử lý dấu tiếng Việt và khoảng trắng)
-            const decodedName = decodeURIComponent(userName);
-            
-            // Hiển thị tên kèm tiền tố "Đồng chí"
-            nameElement.textContent = `Đồng chí ${decodedName}`;
+            nameElement.textContent = "Đồng chí " + decodeURIComponent(userName);
         } else {
-            // Nếu không có tên trên URL, có thể để mặc định hoặc ẩn đi
-            nameElement.textContent = "Quý Đại biểu"; 
+            nameElement.textContent = "Quý Đại biểu";
+            console.log("Không tìm thấy tham số 'ten' trên URL");
         }
+    } else {
+        console.error("Lỗi: Không tìm thấy class '.officer-name' trong HTML!");
     }
 });
