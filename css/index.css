@@ -38,6 +38,19 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "MobileTest";
+  src: local('MobileTest'),
+  url("../fonts/subset-ImperialScript-Regular.woff2") format("woff2"),
+  url("../fonts/subset-ImperialScript-Regular.woff") format("woff"),
+  url("../fonts/subset-ImperialScript-Regular.svg") format("svg"),
+  url("../fonts/subset-ImperialScript-Regular.eot") format("embedded-opentype"),
+  url("../fonts/ImperialScript-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body, html {
@@ -279,10 +292,6 @@ body, html {
    ========================================================================== */
 @media (max-width: 600px) {
 
-  .main-invite, .sub-invite, .program-label {
-  font-family: "SVN-Standly", Arial, sans-serif !important;
-}
-
   /* --- 1. Cấu trúc khung (Giữ nguyên để không vỡ) --- */
   .main-frame {
     width: 95%;      /* Rộng gần hết màn hình */
@@ -306,6 +315,7 @@ body, html {
 
   /* Dòng: Trân trọng kính mời */
   .main-invite {
+    font-family: 'MobileTest', Arial, sans-serif !important;
     font-size: 30px !important; /* Bạn sửa số 32px này */
     line-height: 1.2;
     margin-bottom: 5px;
@@ -320,12 +330,14 @@ body, html {
 
   /* Dòng: Đến tham dự */
   .sub-invite {
+    font-family: 'MobileTest', Arial, sans-serif !important;
     font-size: 24px !important; /* Bạn sửa số 24px này */
     margin-bottom: 0;
   }
 
   /* Dòng: Chương trình */
   .program-label {
+    font-family: 'MobileTest', Arial, sans-serif !important;
     font-size: 30px !important; /* Bạn sửa số 30px này */
     margin-top: 5px;
   }
