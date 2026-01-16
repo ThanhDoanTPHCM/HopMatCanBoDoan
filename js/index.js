@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (nameElement) {
         if (userName) {
-            nameElement.textContent = "Đồng chí " + decodeURIComponent(userName);
+            nameElement.innerHTML = `<span class="style-dong-chi">Đồng chí</span> ${decodeURIComponent(userName)}`;
         } else {
             nameElement.textContent = "Quý Đại biểu";
             console.log("Không tìm thấy tham số 'ten' trên URL");
@@ -19,4 +19,31 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error("Lỗi: Không tìm thấy class '.officer-name' trong HTML!");
     }
+});
+
+
+// Chờ cho toàn bộ trang web (hình ảnh, font, css) tải xong hoàn toàn
+window.addEventListener('load', () => {
+
+    console.log("Trang đã tải xong. Chuẩn bị hiệu ứng...");
+
+    // Tìm phần tử chứa mã QR
+    const qrContainer = document.querySelector('.qr-container');
+
+    // Nếu tìm thấy (đề phòng lỗi HTML quên không cho vào)
+    if (qrContainer) {
+        // Đặt thời gian trễ: 1000 mili giây (tức là 1 giây)
+        // Bạn có thể tăng giảm số này tùy thích
+        setTimeout(() => {
+            // Xóa class ẩn
+            qrContainer.classList.remove('qr-hidden');
+            // Thêm class hiện (kích hoạt hiệu ứng CSS transition)
+            qrContainer.classList.add('qr-visible');
+            console.log("Hiệu ứng QR đã kích hoạt!");
+        }, 1000);
+    }
+
+    // --- Gợi ý mở rộng ---
+    // Nếu bạn muốn thêm hiệu ứng pháo hoa hoặc nhạc,
+    // bạn có thể code tiếp vào bên dưới dòng này.
 });

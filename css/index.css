@@ -133,7 +133,7 @@ body, html {
 }
 
 .main-invite {
-  font-family: 'SVN-Standly', 'imperial Script', cursive;
+  font-family: "SVN-Standly", Arial, sans-serif;
   color: var(--green);
   font-weight: bold;
   /* Chữ chạy từ 35px đến 65px */
@@ -171,7 +171,7 @@ body, html {
 }
 
 .sub-invite {
-  font-family: 'SVN-Standly', 'imperial Script', cursive;
+  font-family: "SVN-Standly", Arial, sans-serif;
   font-weight: bold;
   /* Chữ chạy từ 24px đến 45px */
   font-size: clamp(20px, 4vw, 40px);
@@ -188,7 +188,7 @@ body, html {
 }
 
 .program-label {
-  font-family: 'SVN-Standly', 'imperial Script', cursive;
+  font-family: "SVN-Standly", Arial, sans-serif;
   font-weight: bold;
   color: var(--red);
   /* Chữ chạy từ 28px đến 50px */
@@ -304,7 +304,7 @@ body, html {
 
   /* Dòng: Trân trọng kính mời */
   .main-invite {
-    font-family: 'imperial Script', cursive, sans-serif !important;
+    font-family: 'imperial Script', Arial, sans-serif !important;
     font-size: 30px !important; /* Bạn sửa số 32px này */
     line-height: 1.2;
     margin-bottom: 5px;
@@ -319,14 +319,14 @@ body, html {
 
   /* Dòng: Đến tham dự */
   .sub-invite {
-    font-family: 'imperial Script', cursive, sans-serif !important;
+    font-family: 'imperial Script', Arial, sans-serif !important;
     font-size: 24px !important; /* Bạn sửa số 24px này */
     margin-bottom: 0;
   }
 
   /* Dòng: Chương trình */
   .program-label {
-    font-family: 'imperial Script', cursive, sans-serif !important;
+    font-family: 'imperial Script', Arial, sans-serif !important;
     font-size: 30px !important; /* Bạn sửa số 30px này */
     margin-top: 5px;
   }
@@ -357,6 +357,10 @@ body, html {
     font-size: 16px !important; /* Chữ ngày giờ cụ thể */
     white-space: normal; /* Cho phép xuống dòng nếu địa chỉ quá dài */
   }
+
+  .style-dong-chi {
+    font-family: 'imperial Script', cursive; /* Font thư pháp */
+}
 }
 
 /* ==========================================================================
@@ -435,4 +439,85 @@ body, html {
   .pill-text {
     font-size: 18px !important;
   }
+}
+
+
+/* ==========================================================================
+   6. PHẦN MÃ QR & HIỆU ỨNG XUẤT HIỆN
+   ========================================================================== */
+.qr-container {
+    margin-top: 2rem; /* Khoảng cách với phần thông tin bên trên */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Bản chất của hiệu ứng chuyển động mượt mà nằm ở đây */
+    /* Thời gian chuyển đổi: 0.8 giây, kiểu chuyển động: nảy nhẹ (cubic-bezier) */
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.qr-box {
+    background: #fff;
+    padding: 5px;
+    border-radius: 12px;
+    /* Viền đỏ và đổ bóng cho nổi bật */
+    border: 3px solid var(--red);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    /* Kích thước QR code linh hoạt theo màn hình */
+    width: clamp(100px, 15vw, 140px);
+    height: clamp(100px, 15vw, 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.qr-caption {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: clamp(12px, 2vw, 16px);
+    text-shadow: 1px 1px 0 #fff;
+    font-family: 'TenFontCuaBan', Arial, sans-serif;
+}
+
+/* --- CÁC TRẠNG THÁI HOẠT HÌNH (ANIMATION STATES) --- */
+
+/* Trạng thái ban đầu: ẨN ĐI */
+.qr-hidden {
+    opacity: 0;                 /* Trong suốt */
+    /* Thu nhỏ lại còn 50%, dịch xuống 30px và xoay nghiêng 15 độ */
+    transform: scale(0.5) translateY(30px) rotate(-15deg);
+    filter: blur(10px);         /* Làm mờ */
+    pointer-events: none;       /* Không cho click vào khi chưa hiện */
+}
+
+/* Trạng thái sau khi kích hoạt: HIỆN RA (Class này sẽ được JS thêm vào) */
+.qr-visible {
+    opacity: 1;                 /* Hiện rõ */
+    /* Trở về kích thước, vị trí và góc xoay bình thường */
+    transform: scale(1) translateY(0) rotate(0deg);
+    filter: blur(0);            /* Hết mờ */
+    pointer-events: auto;
+}
+
+/* --- Style riêng cho chữ "Đồng chí" --- */
+.style-dong-chi {
+    font-family: 'SVN-Standly', 'imperial Script', sans-serif; /* Font thư pháp */
+    
+    /* QUAN TRỌNG: Tắt chế độ in hoa của thẻ cha */
+    text-transform: none; 
+    
+    /* QUAN TRỌNG: Tắt chế độ in đậm để chữ thanh thoát hơn */
+    font-weight: bold; 
+    
+    /* Các thuộc tính trang trí khác */
+    font-size: clamp(35px, 4vw, 55px);
+    color: var(--red); 
+    margin-right: 15px; 
+    line-height: 1; /* Giúp chữ không bị đẩy dòng quá cao */
 }
