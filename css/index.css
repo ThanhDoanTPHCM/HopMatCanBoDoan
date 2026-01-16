@@ -16,6 +16,9 @@
   font-family: 'TenFontCuaBan';
   src:  local('TenFontCuaBan'), 
       url('../fonts/subset-UTMHelvetIns.woff2') format("woff2"),
+      url('../fonts/subset-UTMHelvetIns.woff') format("woff"),
+      url('../fonts/subset-UTMHelvetIns.svg') format("svg"),
+      url('../fonts/subset-UTMHelvetIns.eot') format("embedded-opentype"),
       url('../fonts/UTMHelvetIns.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -26,6 +29,9 @@
   font-family: "SVN-Standly";
   src: local('SVN-Standly'),
   url("../fonts/subset-UTMEdwardian.woff2") format("woff2"),
+  url("../fonts/subset-UTMEdwardian.woff") format("woff"),
+  url("../fonts/subset-UTMEdwardian.svg") format("svg"),
+  url("../fonts/subset-UTMEdwardian.eot") format("embedded-opentype"),
   url("../fonts/UTMEdwardianKT.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
