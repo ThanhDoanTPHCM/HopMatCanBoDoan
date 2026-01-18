@@ -44,18 +44,3 @@ window.addEventListener('load', () => {
     }
 
 });
-
-// Đợi cho đến khi tất cả Font chữ được tải xong hoàn toàn
-document.fonts.ready.then(function () {
-    console.log("Phông chữ đã sẵn sàng!");
-    
-    // Thêm một class vào body để thông báo là đã tải xong
-    document.body.classList.add('finished-loading');
-
-    // Kích hoạt hiệu ứng hiện mã QR (nếu bạn muốn)
-    const qr = document.querySelector('.qr-container');
-    if (qr) {
-        qr.classList.remove('qr-hidden');
-        qr.classList.add('qr-visible');
-    }
-});

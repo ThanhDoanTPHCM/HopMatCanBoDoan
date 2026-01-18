@@ -28,13 +28,6 @@ body, html {
   font-family: 'TenFontCuaBan', Arial, sans-serif;
   overflow-x: hidden;
   background-color: #000;
-
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-body.finished-loading {
-  opacity: 1;
 }
 
 .content-wrapper {
