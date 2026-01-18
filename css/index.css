@@ -4,7 +4,7 @@
   --green: #027417;
   --light-bg: #fff9e1;
   --white-glow: 0 0 10px rgba(255, 255, 255, 0.8);
-  /* Bóng chữ tạo viền trắng giúp đọc rõ trên mọi nền */
+  
   --text-stroke: 
       2px 0px 0 #fff, -2px 0px 0 #fff, 0px 2px 0 #fff, 0px -2px 0 #fff,
       1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
@@ -14,29 +14,11 @@
   font-family: 'TenFontCuaBan';
   src:  local('TenFontCuaBan'), 
       url('../fonts/subset-UTMHelvetIns.woff2') format("woff2"),
-      url('../fonts/subset-UTMHelvetIns.woff') format("woff"),
-      url('../fonts/subset-UTMHelvetIns.svg') format("svg"),
-      url('../fonts/subset-UTMHelvetIns.eot') format("embedded-opentype"),
-      url('../fonts/UTMHelvetIns.ttf') format("truetype");
+      url('../fonts/subset-UTMHelvetIns.woff') format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: "SVN-Standly";
-  src: local('SVN-Standly'),
-  url("../fonts/subset-UTMEdwardian.woff2") format("woff2"),
-  url("../fonts/subset-UTMEdwardian.woff") format("woff"),
-  url("../fonts/subset-UTMEdwardian.svg") format("svg"),
-  url("../fonts/subset-UTMEdwardian.eot") format("embedded-opentype"),
-  url("../fonts/UTMEdwardianKT.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -46,6 +28,13 @@ body, html {
   font-family: 'TenFontCuaBan', Arial, sans-serif;
   overflow-x: hidden;
   background-color: #000;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.finished-loading {
+  opacity: 1;
 }
 
 .content-wrapper {
@@ -61,7 +50,7 @@ body, html {
   background-color: #000; /* Nền tối dự phòng */
 }
 
-/* Tạo lớp giả chứa hình nền */
+
 .content-wrapper::before {
   content: "";
   position: absolute;
@@ -89,21 +78,21 @@ body, html {
   padding: 5vh 1vw;
 
   background-image: url('../images/Artboard.png');
-  background-size: 103% 103%;        /* Lấp đầy khung */
-  background-position: center;   /* Căn giữa ảnh */
+  background-size: 103% 103%;        
+  background-position: center;   
   background-repeat: no-repeat;
 
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.15);
   border: 2px solid rgb(240, 13, 13);
 
-  /* Flexbox bố cục dọc */
+  
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Tự chia khoảng cách đều */
+  justify-content: space-between; 
   align-items: center;
   text-align: center;
-  gap: 2rem; /* Khoảng cách tối thiểu giữa các phần (Top - Mid - Bot) */
+  gap: 2rem; 
 }
 
 .top-agency, .main-invite, .sub-invite, .program-label, .event-title, .info-label, .officer-position, .slogan-text, .qr-caption {
@@ -121,11 +110,16 @@ body, html {
   white-space: nowrap; /* Ngăn không cho xuống dòng */
 }
 
+.main-invite, .style-dong-chi, .sub-invite, .program-label {
+  font-family: 'Imperial Script', 'Gwendolyn', cursive;
+  font-weight: bold;
+}
+
 .logo {
   /* Logo cao từ 80px đến 130px tùy màn hình */
   height: clamp(80px, 15vh, 130px);
   width: auto;
-  margin-bottom: auto;
+  margin-bottom: auto;  
   margin-top: -2rem;
   filter: drop-shadow(0 0 5px white);
 }
@@ -133,16 +127,14 @@ body, html {
 .top-agency {
   color: var(--red);
   font-weight: bold;
-  /* Chữ chạy từ 14px (mobile) lên 35px (PC) */
+  
   font-size: clamp(15px, 3.5vw, 30px); 
   margin-bottom: -0.5rem;
 }
 
 .main-invite {
-  font-family: "SVN-Standly", Arial, sans-serif;
   color: var(--green);
-  font-weight: bold;
-  /* Chữ chạy từ 35px đến 65px */
+  
   font-size: clamp(30px, 6vw, 50px);
   line-height: 1.5;
   margin-bottom: -1.4rem;
@@ -152,7 +144,7 @@ body, html {
   color: var(--red);
   font-weight: bold;
   text-transform: uppercase;
-  /* Chữ chạy từ 20px đến 40px */
+  
   font-size: clamp(20px, 4vw, 35px);
   margin-top: 1rem;
   margin-bottom: 0.6rem;
@@ -160,24 +152,18 @@ body, html {
 }
 
 .style-dong-chi {
-    font-family: 'SVN-Standly', 'imperial Script', sans-serif; /* Font thư pháp */
-    
     
     text-transform: none; 
-    
-    
-    font-weight: bold; 
-    
-    
+      
     font-size: clamp(20px, 4vw, 35px);
     color: var(--red); 
     margin-right: 15px; 
-    line-height: 1; /* Giúp chữ không bị đẩy dòng quá cao */
+    line-height: 1; 
 }
 
 
 .officer-position {
-    color: var(--red); /* Màu đỏ đặc trưng của Đoàn */
+    color: var(--red); 
     font-weight: 500;
     font-size: clamp(15px, 2.5vw, 30px);
     margin-bottom: -1.5rem;
@@ -193,8 +179,6 @@ body, html {
 }
 
 .sub-invite {
-  font-family: "SVN-Standly", Arial, sans-serif;
-  font-weight: bold;
   /* Chữ chạy từ 24px đến 45px */
   font-size: clamp(30px, 4vw, 50px);
     color: var(--green);
@@ -202,8 +186,6 @@ body, html {
 }
 
 .program-label {
-  font-family: "SVN-Standly", Arial, sans-serif;
-  font-weight: bold;
   color: var(--red);
   /* Chữ chạy từ 28px đến 50px */
   font-size: clamp(35px, 4vw, 60px);
@@ -217,7 +199,7 @@ body, html {
   /* Chữ chạy từ 20px đến 45px */
   font-size: clamp(20px, 4vw, 45px);
   margin-top: 1rem;
-  max-width: 900px; /* Giới hạn chiều rộng để không bị dài quá trên màn hình rộng */
+  max-width: 900px; 
 }
 
 
@@ -225,13 +207,13 @@ body, html {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Giữ cả khối nằm giữa thư mời */
+  align-items: center; 
 }
 
 .info-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Căn trái các dòng bên trong */
+  align-items: flex-start; 
   gap: 20px;
   
   
@@ -256,7 +238,7 @@ body, html {
   font-weight: bold;
   color: var(--green);
   text-align: left; 
-  margin-top: 10px; /* Căn chỉnh cho khớp với chiều cao của pill-box */
+  margin-top: 10px; 
 }
 
 .pill-box {
@@ -277,7 +259,7 @@ body, html {
   white-space: normal; /* Quan trọng để địa chỉ dài tự xuống dòng */
 }
 
-/* Slogan ở đáy thư mời */
+
 .slogan-container {
     margin-top: auto;
     padding-top: 2rem;
@@ -350,7 +332,7 @@ body, html {
 
 .qr-visible {
     opacity: 1;                 /* Hiện rõ */
-    /* Trở về kích thước, vị trí và góc xoay bình thường */
+    
     transform: scale(1) translateY(0) rotate(0deg);
     filter: blur(0);            /* Hết mờ */
     pointer-events: auto;
@@ -366,23 +348,12 @@ body, html {
   .slogan-text, 
   .event-title,
   .top-agency {
-    
-    white-space: nowrap !important; 
-    
-    
     overflow: visible; 
-
-    
-    
     display: block;
     width: 100%;
     text-align: center; 
   }
 
-  
-  .main-invite, .sub-invite, .program-label {
-    font-family: 'imperial Script', cursive, sans-serif !important;
-  }
   
   .content-wrapper {
     padding: 5px; 
@@ -422,7 +393,7 @@ body, html {
 
 .top-agency {
     margin-bottom: 0.1rem;
-    font-size: 3.7vw;
+    font-size: 4vw;
   }
 
   .main-invite {
