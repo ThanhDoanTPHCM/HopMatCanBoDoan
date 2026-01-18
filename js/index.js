@@ -2,45 +2,54 @@ console.log("Script đã kết nối thành công!");
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get('ten');
     
-    console.log("Tên lấy được từ URL là:", userName);
-
+    // --- XỬ LÝ TÊN (Code cũ) ---
+    const userName = urlParams.get('ten');
     const nameElement = document.querySelector('.officer-name');
-    console.log("Phần tử hiển thị tên là:", nameElement);
 
     if (nameElement) {
         if (userName) {
             nameElement.innerHTML = `<span class="style-dong-chi">Đồng chí</span> ${decodeURIComponent(userName)}`;
         } else {
             nameElement.textContent = "Quý Đại biểu";
-            console.log("Không tìm thấy tham số 'ten' trên URL");
         }
     } else {
-        console.error("Lỗi: Không tìm thấy class '.officer-name' trong HTML!");
+        console.error("Lỗi: Không tìm thấy class '.officer-name'");
+    }
+
+    // --- XỬ LÝ CHỨC VỤ (Mới thêm) ---
+    // 1. Lấy tham số 'chucvu' từ URL
+    const userPosition = urlParams.get('chucvu');
+    console.log("Chức vụ lấy được là:", userPosition);
+
+    // 2. Tìm phần tử HTML để hiển thị chức vụ
+    const positionElement = document.querySelector('.officer-position');
+
+    if (positionElement) {
+        if (userPosition) {
+            // Giải mã URL (decode) để hiển thị tiếng Việt đúng
+            positionElement.textContent = decodeURIComponent(userPosition);
+            // Đảm bảo nó hiện lên (phòng trường hợp CSS đang ẩn)
+            positionElement.style.display = 'block';
+        } else {
+            // Nếu không có chức vụ trên URL thì ẩn dòng này đi cho đẹp
+            positionElement.style.display = 'none';
+            console.log("Không có chức vụ, đã ẩn dòng chức vụ.");
+        }
+    } else {
+        console.warn("Lưu ý: Chưa có class '.officer-position' trong HTML để hiện chức vụ.");
     }
 });
 
-
-// Chờ cho toàn bộ trang web (hình ảnh, font, css) tải xong hoàn toàn
+// --- PHẦN HIỆU ỨNG QR (Giữ nguyên) ---
 window.addEventListener('load', () => {
-
     console.log("Trang đã tải xong. Chuẩn bị hiệu ứng...");
-
-    // Tìm phần tử chứa mã QR
     const qrContainer = document.querySelector('.qr-container');
-
-    // Nếu tìm thấy (đề phòng lỗi HTML quên không cho vào)
     if (qrContainer) {
-        // Đặt thời gian trễ: 1000 mili giây (tức là 1 giây)
-        // Bạn có thể tăng giảm số này tùy thích
         setTimeout(() => {
-            // Xóa class ẩn
             qrContainer.classList.remove('qr-hidden');
-            // Thêm class hiện (kích hoạt hiệu ứng CSS transition)
             qrContainer.classList.add('qr-visible');
             console.log("Hiệu ứng QR đã kích hoạt!");
         }, 1000);
     }
-
 });
