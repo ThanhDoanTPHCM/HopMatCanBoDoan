@@ -310,7 +310,9 @@ body, html {
 .qr-caption {
     margin-top: 10px;
     font-size: clamp(20px, 2vw, 25px);
-    font-family: 'TenFontCuaBan', Arial, sans-serif;
+    font-family: "Prompt", sans-serif;
+    font-weight: 800;
+    color: rgb(8, 92, 189)
 }
 
 
