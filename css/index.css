@@ -250,6 +250,8 @@ body, html {
   line-height: 1.4;
   text-align: left;
   white-space: normal; /* Quan trọng để địa chỉ dài tự xuống dòng */
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 900;
 }
 
 
